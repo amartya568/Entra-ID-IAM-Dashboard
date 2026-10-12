@@ -1,0 +1,25 @@
+Timestamp,Workflow,Employee,Action,Result
+2026-09-27T19:15:28,TEST,test@example.com,Test audit log,Success
+2026-09-27T19:52:25,MOVER,jmltestemployee@amitavahazrahotmail.onmicrosoft.com,Department=Security; JobTitle=Security Analyst,Success
+2026-09-27T19:54:29,JOINER,jmltestemployee@amitavahazrahotmail.onmicrosoft.com,Add employee to IT Team,Already member or Graph rejected request
+2026-09-27T19:57:22,LEAVER,jmltestemployee@amitavahazrahotmail.onmicrosoft.com,Disable employee account,Success
+2026-09-28T18:16:49,MOVER,jmltestemployee@amitavahazrahotmail.onmicrosoft.com,Department=Security; JobTitle=Security Analyst,Success
+2026-09-28T18:17:32,JOINER,jmltestemployee@amitavahazrahotmail.onmicrosoft.com,Add employee to IT Team,Already member or Graph rejected request
+2026-09-28T18:18:03,LEAVER,jmltestemployee@amitavahazrahotmail.onmicrosoft.com,Disable employee account,Success
+2026-09-29T09:39:27,JOINER,jmltestemployee@amitavahazrahotmail.onmicrosoft.com,Add employee to IT Team,Already member or Graph rejected request
+2026-09-29T09:43:08,MOVER,jmltestemployee@amitavahazrahotmail.onmicrosoft.com,Department=Security; JobTitle=Security Analyst,Success
+2026-09-29T09:45:22,LEAVER,jmltestemployee@amitavahazrahotmail.onmicrosoft.com,Disable employee account,Success
+2026-09-29T11:08:27,JOINER,jmltestemployee@amitavahazrahotmail.onmicrosoft.com,Add employee to IT Team,Already member or Graph rejected request
+2026-09-29T11:09:08,MOVER,jmltestemployee@amitavahazrahotmail.onmicrosoft.com,Department=Security; JobTitle=Security Analyst,Success
+2026-09-29T11:09:28,LEAVER,jmltestemployee@amitavahazrahotmail.onmicrosoft.com,Disable employee account,Success
+2026-10-12T01:15:41,JOINER,aarav.sharma.test@example.com,Add employee to IT Team,Employee not found
+2026-10-12T01:19:05,JOINER,aarav.sharma.test@example.com,Add employee to IT Team,Employee not found
+2026-10-12T23:09:42,JOINER,amartya@amitavahazrahotmail.onmicrosoft.com,Add employee to IT Team,Success
+2026-10-12T23:12:13,MOVER,amartya@amitavahazrahotmail.onmicrosoft.com,Department=HR; JobTitle=HR Analyst,Success
+2026-10-12T23:12:55,LEAVER,amartya@amitavahazrahotmail.onmicrosoft.com,Disable employee account,Graph API Error: 403
+2026-10-12T23:26:52,JOINER,iam.test.employee@amitavahazrahotmail.onmicrosoft.com,Add employee to IT Team,Success
+2026-10-12T23:27:36,MOVER,iam.test.employee@amitavahazrahotmail.onmicrosoft.com,Department=HR; JobTitle=HR Analyst,Success
+2026-10-12T23:28:08,LEAVER,iam.test.employee@amitavahazrahotmail.onmicrosoft.com,Disable employee account,Success
+2026-10-12T23:46:38,JOINER,rahul.test.employee@amitavahazrahotmail.onmicrosoft.com,Add employee to IT Team,Success
+2026-10-12T23:47:27,MOVER,rahul.test.employee@amitavahazrahotmail.onmicrosoft.com,Department=HR; JobTitle=Analyst,Success
+2026-10-12T23:48:05,LEAVER,rahul.test.employee@amitavahazrahotmail.onmicrosoft.com,Disable employee account,Success

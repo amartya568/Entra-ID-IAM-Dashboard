@@ -1,0 +1,2171 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Employee IAM | Microsoft Entra ID</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-brand">
+
+        <div class="brand-logo">
+            <svg viewBox="0 0 24 24" fill="none">
+                <path
+                    d="M12 2L20 5V11C20 16.2 16.6 20.8 12 22C7.4 20.8 4 16.2 4 11V5L12 2Z"
+                    fill="currentColor"
+                />
+                <path
+                    d="M12 7V15"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                />
+                <path
+                    d="M8.5 11H15.5"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                />
+            </svg>
+        </div>
+
+        <div class="brand-text">
+            <strong>Employee IAM</strong>
+            <span>Identity Platform</span>
+        </div>
+
+    </div>
+
+
+    <div class="sidebar-section-label">
+        PLATFORM
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+        <a href="/" class="nav-item active">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/>
+            </svg>
+
+            <span>Overview</span>
+
+        </a>
+
+
+        <a href="#employees" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+
+            <span>Employees</span>
+
+        </a>
+
+
+        <a href="#workflows" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M12 3v18"/>
+                <path d="M5 7h14"/>
+                <path d="M5 17h14"/>
+                <circle cx="5" cy="7" r="2"/>
+                <circle cx="19" cy="17" r="2"/>
+            </svg>
+
+            <span>Lifecycle</span>
+
+            <span class="nav-chevron">›</span>
+
+        </a>
+
+
+        <a href="#groups" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <rect x="3" y="4" width="7" height="7" rx="1"/>
+                <rect x="14" y="4" width="7" height="7" rx="1"/>
+                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                <rect x="14" y="14" width="7" height="7" rx="1"/>
+            </svg>
+
+            <span>Groups</span>
+
+        </a>
+
+
+        <a href="#audit" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M4 5h16v14H4z"/>
+                <path d="M8 9h8"/>
+                <path d="M8 13h5"/>
+                <path d="M8 17h7"/>
+            </svg>
+
+            <span>Audit Logs</span>
+
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-section-label settings-label">
+        SYSTEM
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+        <a href="#" class="nav-item">
+
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 1.7-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.55V20h-2.4v-.21a1.7 1.7 0 0 0-1.03-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06-1.7-1.7.06-.06A1.7 1.7 0 0 0 8.46 15a1.7 1.7 0 0 0-1.55-1.03H6.7v-2.4h.21A1.7 1.7 0 0 0 8.46 10a1.7 1.7 0 0 0-.34-1.88l-.06-.06 1.7-1.7.06.06a1.7 1.7 0 0 0 1.88.34 1.7 1.7 0 0 0 1.03-1.55V5h2.4v.21A1.7 1.7 0 0 0 16.16 6.76a1.7 1.7 0 0 0 1.88-.34l.06-.06 1.7 1.7-.06.06A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.55 1.03h.21v2.4h-.21A1.7 1.7 0 0 0 19.4 15z"/>
+            </svg>
+
+            <span>Settings</span>
+
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="profile-avatar">
+            AH
+        </div>
+
+        <div class="profile-info">
+
+            <strong>IAM Administrator</strong>
+            <span>Entra ID</span>
+
+        </div>
+
+        <span class="profile-menu">⋮</span>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="main">
+
+
+    <!-- TOP HEADER -->
+
+    <header class="top-header">
+
+        <div>
+
+            <div class="breadcrumb">
+                Identity Management
+                <span>/</span>
+                Overview
+            </div>
+
+            <h1>
+                Employee IAM Dashboard
+            </h1>
+
+            <p>
+                Microsoft Entra ID employee identity management
+            </p>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <div class="connection-status">
+                <span class="badge">
+                    <span class="live-dot"></span>
+                    Entra ID Connected
+                </span>
+            </div>
+
+
+            <button
+                type="button"
+                class="icon-button"
+                id="headerSearchButton"
+                title="Search dashboard sections"
+                aria-label="Search dashboard sections"
+                aria-controls="sectionSearchInput"
+                aria-expanded="false"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="11" cy="11" r="6"/>
+                    <path d="M16 16l5 5"/>
+                </svg>
+            </button>
+
+            <input
+                type="search"
+                id="sectionSearchInput"
+                class="header-search-input"
+                placeholder="Search sections..."
+                aria-label="Search dashboard sections"
+                list="dashboardSectionOptions"
+                autocomplete="off"
+                hidden
+            >
+
+            <datalist id="dashboardSectionOptions">
+                <option value="IAM Overview"></option>
+                <option value="Identity Lifecycle Workflows"></option>
+                <option value="Employee Directory"></option>
+                <option value="IAM Audit Log"></option>
+                <option value="Entra ID Groups"></option>
+            </datalist>
+
+            <button
+                type="button"
+                class="icon-button"
+                id="headerNotificationsButton"
+                title="Notifications"
+                aria-label="Open notifications"
+                aria-controls="notificationPanel"
+                aria-expanded="false"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+                    <path d="M10 21h4"/>
+                </svg>
+            </button>
+
+            <div
+                class="notification-panel"
+                id="notificationPanel"
+                role="region"
+                aria-label="Recent IAM activity"
+                hidden
+            >
+                <div class="notification-panel-header">
+                    <strong>Recent IAM Activity</strong>
+                    <button
+                        type="button"
+                        class="notification-close"
+                        id="closeNotifications"
+                        aria-label="Close notifications"
+                    >×</button>
+                </div>
+
+                <div
+                    class="notification-list"
+                    id="notificationList"
+                ></div>
+
+                <a
+                    href="#audit"
+                    class="notification-view-all"
+                    id="viewAuditLogs"
+                >View audit logs →</a>
+            </div>
+
+
+            <div class="header-avatar">
+                AH
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <div class="content">
+        <div
+            id="sectionSearchNoResults"
+            class="section-search-no-results"
+            hidden
+        >
+            No matching dashboard section found.
+        </div>
+
+
+        <!-- =====================================================
+             PAGE INTRO
+        ====================================================== -->
+
+        <section class="page-intro">
+
+            <div>
+
+                <h2>IAM Overview</h2>
+
+                <p>
+                    Monitor employee identities, lifecycle workflows,
+                    groups and access activity.
+                </p>
+
+            </div>
+
+
+            <div class="live-indicator">
+
+                <span></span>
+
+                Live
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             KPI CARDS
+        ====================================================== -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon blue">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                        </svg>
+
+                    </div>
+
+                    <span class="stat-label">
+                        DIRECTORY
+                    </span>
+
+                </div>
+
+
+                <div class="stat-number">
+                    {{ total_users }}
+                </div>
+
+                <div class="stat-title">
+                    Total Employees
+                </div>
+
+                <div class="stat-footer">
+                    Entra ID users
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon green">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+
+                    </div>
+
+                    <span class="stat-label">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="stat-number">
+                    {{ active_users }}
+                </div>
+
+                <div class="stat-title">
+                    Active Employees
+                </div>
+
+                <div class="stat-footer">
+                    Enabled accounts
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon orange">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 8v5"/>
+                            <path d="M12 17h.01"/>
+                            <path d="M10.3 3.5L2.6 17a2 2 0 0 0 1.74 3h15.32a2 2 0 0 0 1.74-3L13.7 3.5a2 2 0 0 0-3.4 0z"/>
+                        </svg>
+
+                    </div>
+
+                    <span class="stat-label">
+                        SECURITY
+                    </span>
+
+                </div>
+
+
+                <div class="stat-number">
+                    {{ disabled_users }}
+                </div>
+
+                <div class="stat-title">
+                    Disabled Accounts
+                </div>
+
+                <div class="stat-footer">
+                    Disabled Entra accounts
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon purple">
+
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="4" width="7" height="7" rx="1"/>
+                            <rect x="14" y="4" width="7" height="7" rx="1"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1"/>
+                            <rect x="14" y="14" width="7" height="7" rx="1"/>
+                        </svg>
+
+                    </div>
+
+                    <span class="stat-label">
+                        ACCESS
+                    </span>
+
+                </div>
+
+
+                <div class="stat-number">
+                    {{ total_groups }}
+                </div>
+
+                <div class="stat-title">
+                    Total Groups
+                </div>
+
+                <div class="stat-footer">
+                    Entra ID groups
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             MESSAGE
+        ====================================================== -->
+
+        {% if message %}
+
+            {% if message.startswith("SUCCESS:") %}
+
+                <div class="alert success">
+
+                    <div class="alert-icon">✓</div>
+
+                    <div>
+                        <strong>Operation completed</strong>
+                        <span>
+                            {{ message.replace("SUCCESS: ", "") }}
+                        </span>
+                    </div>
+
+                </div>
+
+            {% elif message.startswith("ERROR:") %}
+
+                <div class="alert error">
+
+                    <div class="alert-icon">!</div>
+
+                    <div>
+                        <strong>Operation failed</strong>
+                        <span>
+                            {{ message.replace("ERROR: ", "") }}
+                        </span>
+                    </div>
+
+                </div>
+
+            {% else %}
+
+                <div class="alert info">
+
+                    <div class="alert-icon">i</div>
+
+                    <div>
+                        <strong>Information</strong>
+                        <span>
+                            {{ message.replace("INFO: ", "") }}
+                        </span>
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+        {% endif %}
+
+
+        <!-- =====================================================
+             WORKFLOWS
+        ====================================================== -->
+
+        <section id="workflows" class="section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>Identity Lifecycle Workflows</h2>
+
+                    <p>
+                        Manage employee identity lifecycle operations.
+                    </p>
+
+                </div>
+
+                <span class="section-action">
+                    Lifecycle Automation
+                </span>
+
+            </div>
+
+
+            <div class="workflow-grid">
+
+
+                <!-- JOINER -->
+
+                <div class="workflow-card joiner-card">
+
+                    <div class="workflow-header">
+
+                        <div class="workflow-icon green">
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M15 12h6"/>
+                                <path d="M18 9l3 3-3 3"/>
+                                <path d="M13 6H5a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h8"/>
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <h3>Joiner</h3>
+
+                            <span>
+                                New employee provisioning
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="workflow-description">
+                        Add a new employee to the IT Team
+                        security group.
+                    </p>
+
+
+                    <form
+                        method="POST"
+                        action="/joiner"
+                    >
+
+                        <label>
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            name="user_upn"
+                            placeholder="employee@domain.com"
+                            required
+                        >
+
+
+                        <button
+                            type="submit"
+                            class="workflow-button green-button"
+                        >
+
+                            <span>Run Joiner</span>
+
+                            <span>→</span>
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- MOVER -->
+
+                <div class="workflow-card mover-card">
+
+                    <div class="workflow-header">
+
+                        <div class="workflow-icon blue">
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M7 7h10"/>
+                                <path d="M14 4l3 3-3 3"/>
+                                <path d="M17 17H7"/>
+                                <path d="M10 14l-3 3 3 3"/>
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <h3>Mover</h3>
+
+                            <span>
+                                Employee role changes
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="workflow-description">
+                        Update department and job title
+                        when an employee changes role.
+                    </p>
+
+
+                    <form
+                        method="POST"
+                        action="/mover"
+                    >
+
+                        <label>
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            name="user_upn"
+                            placeholder="employee@domain.com"
+                            required
+                        >
+
+
+                        <div class="form-row">
+
+                            <div>
+
+                                <label>
+                                    Department
+                                </label>
+
+                                <select
+                                    name="department"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Department
+                                    </option>
+
+                                    <option value="IT">
+                                        IT
+                                    </option>
+
+                                    <option value="HR">
+                                        HR
+                                    </option>
+
+                                    <option value="Finance">
+                                        Finance
+                                    </option>
+
+                                    <option value="Security">
+                                        Security
+                                    </option>
+
+                                    <option value="Service">
+                                        Service
+                                    </option>
+
+                                    <option value="Operations">
+                                        Operations
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div>
+
+                                <label>
+                                    Job Title
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="job_title"
+                                    placeholder="New Job Title"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="workflow-button blue-button"
+                        >
+
+                            <span>Run Mover</span>
+
+                            <span>→</span>
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- LEAVER -->
+
+                <div class="workflow-card leaver-card">
+
+                    <div class="workflow-header">
+
+                        <div class="workflow-icon red">
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M8 6h13"/>
+                                <path d="M8 12h13"/>
+                                <path d="M8 18h13"/>
+                                <path d="M3 6h.01"/>
+                                <path d="M3 12h.01"/>
+                                <path d="M3 18h.01"/>
+                            </svg>
+
+                        </div>
+
+                        <div>
+
+                            <h3>Leaver</h3>
+
+                            <span>
+                                Account deprovisioning
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="workflow-description">
+                        Disable an employee's Microsoft
+                        Entra ID account.
+                    </p>
+
+
+                    <form
+                        method="POST"
+                        action="/leaver"
+                    >
+
+                        <label>
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            name="user_upn"
+                            placeholder="employee@domain.com"
+                            required
+                        >
+
+
+                        <button
+                            type="submit"
+                            class="workflow-button red-button"
+                        >
+
+                            <span>Run Leaver</span>
+
+                            <span>→</span>
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             EMPLOYEE DIRECTORY
+        ====================================================== -->
+
+        <section
+            id="employees"
+            class="section"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>Employee Directory</h2>
+
+                    <p>
+                        Manage and review employee identities.
+                    </p>
+
+                </div>
+
+                <div class="section-tools">
+
+                    <span class="record-count">
+                        {{ total_users }} employees
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="data-card">
+
+                <div class="table-toolbar">
+
+                    <div class="search-wrapper">
+
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="6"/>
+                            <path d="M16 16l5 5"/>
+                        </svg>
+
+                        <input
+                            id="employeeSearch"
+                            type="text"
+                            placeholder="Search name, email, department or job title..."
+                            onkeyup="filterEmployees()"
+                        >
+
+                    </div>
+
+
+                    <select
+                        id="departmentFilter"
+                        onchange="filterEmployees()"
+                    >
+
+                        <option value="">
+                            All Departments
+                        </option>
+
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Security">Security</option>
+                        <option value="Service">Service</option>
+                        <option value="Operations">Operations</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table id="employeeTable">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>EMPLOYEE</th>
+
+                                <th>EMAIL</th>
+
+                                <th>DEPARTMENT</th>
+
+                                <th>JOB TITLE</th>
+
+                                <th>STATUS</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for user in users %}
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="employee-cell">
+
+                                        <div class="employee-avatar">
+                                            {{ user.displayName[:2].upper() }}
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                {{ user.displayName }}
+                                            </strong>
+
+                                            <span>
+                                                Employee
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td class="email-cell">
+
+                                    {{ user.userPrincipalName }}
+
+                                </td>
+
+
+                                <td>
+
+                                    {% if user.department %}
+
+                                        <span class="department-tag">
+                                            {{ user.department }}
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="muted">
+                                            Not assigned
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+
+                                <td>
+
+                                    {% if user.jobTitle %}
+
+                                        {{ user.jobTitle }}
+
+                                    {% else %}
+
+                                        <span class="muted">
+                                            Not assigned
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+
+                                <td>
+
+                                    {% if user.accountEnabled %}
+
+                                        <span class="status active">
+                                            <span></span>
+                                            Active
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="status disabled">
+                                            <span></span>
+                                            Disabled
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+
+                            {% if not users %}
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="empty"
+                                >
+                                    No employees found.
+                                </td>
+
+                            </tr>
+
+                            {% endif %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="table-footer">
+
+                    <span id="employeeCount">
+                        Showing {{ total_users }} employees
+                    </span>
+
+                    <div class="pagination">
+
+                        <button
+                            onclick="previousPage()"
+                            id="prevButton"
+                        >
+                            ‹
+                        </button>
+
+                        <span
+                            id="pageNumber"
+                            class="current-page"
+                        >
+                            1
+                        </span>
+
+                        <button
+                            onclick="nextPage()"
+                            id="nextButton"
+                        >
+                            ›
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             AUDIT LOG
+        ====================================================== -->
+
+        <section
+            id="audit"
+            class="section"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>IAM Audit Log</h2>
+
+                    <p>
+                        Track identity lifecycle activity.
+                    </p>
+
+                </div>
+
+                <span class="section-action">
+                    Last activity
+                </span>
+
+            </div>
+
+
+            <div class="data-card">
+
+                <div class="table-toolbar">
+
+                    <div class="search-wrapper">
+
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="6"/>
+                            <path d="M16 16l5 5"/>
+                        </svg>
+
+                        <input
+                            id="auditSearch"
+                            type="text"
+                            placeholder="Search workflow, employee, action or result..."
+                            onkeyup="filterAuditLogs()"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table id="auditTable">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>TIMESTAMP</th>
+                                <th>WORKFLOW</th>
+                                <th>EMPLOYEE</th>
+                                <th>ACTION</th>
+                                <th>RESULT</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for log in audit_logs %}
+
+                            <tr>
+
+                                <td class="timestamp">
+                                    {{ log.Timestamp }}
+                                </td>
+
+
+                                <td>
+
+                                    {% if log.Workflow == "JOINER" %}
+
+                                        <span class="workflow-pill joiner">
+                                            JOINER
+                                        </span>
+
+                                    {% elif log.Workflow == "MOVER" %}
+
+                                        <span class="workflow-pill mover">
+                                            MOVER
+                                        </span>
+
+                                    {% elif log.Workflow == "LEAVER" %}
+
+                                        <span class="workflow-pill leaver">
+                                            LEAVER
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="workflow-pill">
+                                            {{ log.Workflow }}
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+
+                                <td class="email-cell">
+                                    {{ log.Employee }}
+                                </td>
+
+
+                                <td>
+                                    {{ log.Action }}
+                                </td>
+
+
+                                <td>
+
+                                    {% if log.Result == "Success" %}
+
+                                        <span class="result success-result">
+                                            <span>✓</span>
+                                            Success
+                                        </span>
+
+                                    {% elif
+                                        "Authentication failed"
+                                        in log.Result
+                                    %}
+
+                                        <span class="result error-result">
+                                            <span>!</span>
+                                            {{ log.Result }}
+                                        </span>
+
+                                    {% elif
+                                        "not found"
+                                        in log.Result.lower()
+                                    %}
+
+                                        <span class="result error-result">
+                                            <span>!</span>
+                                            {{ log.Result }}
+                                        </span>
+
+                                    {% elif
+                                        "Graph API Error"
+                                        in log.Result
+                                    %}
+
+                                        <span class="result error-result">
+                                            <span>!</span>
+                                            {{ log.Result }}
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="result info-result">
+                                            <span>i</span>
+                                            {{ log.Result }}
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+
+                            {% if not audit_logs %}
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="empty"
+                                >
+                                    No audit log entries found.
+                                </td>
+
+                            </tr>
+
+                            {% endif %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="table-footer">
+
+                    <span>
+                        {{ audit_logs|length }} audit events
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             GROUPS
+        ====================================================== -->
+
+        <section
+            id="groups"
+            class="section"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>Entra ID Groups</h2>
+
+                    <p>
+                        Directory groups connected to this tenant.
+                    </p>
+
+                </div>
+
+                <span class="section-action">
+                    {{ total_groups }} groups
+                </span>
+
+            </div>
+
+
+            <div class="data-card">
+
+                <div class="table-toolbar">
+
+                    <div class="search-wrapper">
+
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="6"/>
+                            <path d="M16 16l5 5"/>
+                        </svg>
+
+                        <input
+                            id="groupSearch"
+                            type="text"
+                            placeholder="Search groups..."
+                            onkeyup="filterGroups()"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table id="groupTable">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>GROUP NAME</th>
+
+                                <th>DESCRIPTION</th>
+
+                                <th>GROUP TYPE</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for group in groups %}
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="group-cell">
+
+                                        <div class="group-icon">
+
+                                            <svg viewBox="0 0 24 24">
+                                                <rect x="3" y="4" width="7" height="7" rx="1"/>
+                                                <rect x="14" y="4" width="7" height="7" rx="1"/>
+                                                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                                                <rect x="14" y="14" width="7" height="7" rx="1"/>
+                                            </svg>
+
+                                        </div>
+
+                                        <strong>
+                                            {{ group.displayName }}
+                                        </strong>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    {% if group.description %}
+
+                                        {{ group.description }}
+
+                                    {% else %}
+
+                                        <span class="muted">
+                                            No description
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+
+                                <td>
+
+                                    {% if group.groupTypes %}
+
+                                        <span class="group-type">
+                                            {{ group.groupTypes | join(", ") }}
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="group-type">
+                                            Security Group
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+
+                            {% if not groups %}
+
+                            <tr>
+
+                                <td
+                                    colspan="3"
+                                    class="empty"
+                                >
+                                    No groups found.
+                                </td>
+
+                            </tr>
+
+                            {% endif %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             FOOTER
+        ====================================================== -->
+
+        <footer class="footer">
+
+            <div>
+
+                <strong>
+                    Employee IAM
+                </strong>
+
+                <span>
+                    Microsoft Entra ID
+                </span>
+
+            </div>
+
+            <span>
+                Joiner · Mover · Leaver Automation
+            </span>
+
+        </footer>
+
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* ---------------------------------------------------------
+       EMPLOYEE SEARCH + FILTER
+    --------------------------------------------------------- */
+
+    function filterEmployees() {
+
+        const search =
+            document
+                .getElementById("employeeSearch")
+                .value
+                .toLowerCase();
+
+        const department =
+            document
+                .getElementById("departmentFilter")
+                .value
+                .toLowerCase();
+
+        const rows =
+            document.querySelectorAll(
+                "#employeeTable tbody tr"
+            );
+
+        let visible = 0;
+
+        rows.forEach(function(row) {
+
+            const text =
+                row.innerText.toLowerCase();
+
+            const matchesSearch =
+                text.includes(search);
+
+            const matchesDepartment =
+                !department ||
+                text.includes(department);
+
+            if (
+                matchesSearch &&
+                matchesDepartment
+            ) {
+
+                row.style.display = "";
+
+                visible++;
+
+            } else {
+
+                row.style.display = "none";
+
+            }
+
+        });
+
+        document.getElementById(
+            "employeeCount"
+        ).innerText =
+            "Showing " + visible + " employees";
+
+    }
+
+
+    /* ---------------------------------------------------------
+       AUDIT SEARCH
+    --------------------------------------------------------- */
+
+    function filterAuditLogs() {
+
+        const search =
+            document
+                .getElementById("auditSearch")
+                .value
+                .toLowerCase();
+
+        const rows =
+            document.querySelectorAll(
+                "#auditTable tbody tr"
+            );
+
+        rows.forEach(function(row) {
+
+            const text =
+                row.innerText.toLowerCase();
+
+            if (text.includes(search)) {
+
+                row.style.display = "";
+
+            } else {
+
+                row.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* ---------------------------------------------------------
+       GROUP SEARCH
+    --------------------------------------------------------- */
+
+    function filterGroups() {
+
+        const search =
+            document
+                .getElementById("groupSearch")
+                .value
+                .toLowerCase();
+
+        const rows =
+            document.querySelectorAll(
+                "#groupTable tbody tr"
+            );
+
+        rows.forEach(function(row) {
+
+            const text =
+                row.innerText.toLowerCase();
+
+            if (text.includes(search)) {
+
+                row.style.display = "";
+
+            } else {
+
+                row.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* ---------------------------------------------------------
+       SIMPLE EMPLOYEE PAGINATION
+    --------------------------------------------------------- */
+
+    let currentPage = 1;
+
+    const pageSize = 12;
+
+
+    function updatePagination() {
+
+        const rows =
+            Array.from(
+                document.querySelectorAll(
+                    "#employeeTable tbody tr"
+                )
+            );
+
+        const visibleRows =
+            rows.filter(
+                row => row.style.display !== "none"
+            );
+
+        const totalPages =
+            Math.max(
+                1,
+                Math.ceil(
+                    visibleRows.length / pageSize
+                )
+            );
+
+        if (currentPage > totalPages) {
+
+            currentPage = totalPages;
+
+        }
+
+        visibleRows.forEach(
+            function(row, index) {
+
+                const start =
+                    (currentPage - 1) *
+                    pageSize;
+
+                const end =
+                    start + pageSize;
+
+                row.style.display =
+                    index >= start &&
+                    index < end
+                        ? ""
+                        : "none";
+
+            }
+        );
+
+        document.getElementById(
+            "pageNumber"
+        ).innerText = currentPage;
+
+        document.getElementById(
+            "prevButton"
+        ).disabled =
+            currentPage === 1;
+
+        document.getElementById(
+            "nextButton"
+        ).disabled =
+            currentPage === totalPages;
+
+    }
+
+
+    function previousPage() {
+
+        if (currentPage > 1) {
+
+            currentPage--;
+
+            updatePagination();
+
+        }
+
+    }
+
+
+    function nextPage() {
+
+        const rows =
+            document.querySelectorAll(
+                "#employeeTable tbody tr"
+            );
+
+        const totalPages =
+            Math.max(
+                1,
+                Math.ceil(
+                    rows.length / pageSize
+                )
+            );
+
+        if (currentPage < totalPages) {
+
+            currentPage++;
+
+            updatePagination();
+
+        }
+
+    }
+
+
+    /* ---------------------------------------------------------
+       SMOOTH NAVIGATION
+    --------------------------------------------------------- */
+
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(function(item) {
+
+            item.addEventListener(
+                "click",
+                function() {
+
+                    document
+                        .querySelectorAll(".nav-item")
+                        .forEach(
+                            nav =>
+                                nav.classList.remove("active")
+                        );
+
+                    this.classList.add("active");
+
+                }
+            );
+
+        });
+
+
+    /* ---------------------------------------------------------
+       INITIALIZE
+    --------------------------------------------------------- */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            updatePagination();
+
+        }
+    );
+
+    /* =========================================================
+   HEADER SEARCH BUTTON
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+/* HEADER SEARCH - FILTER DASHBOARD SECTIONS */
+
+    const searchButton = document.getElementById(
+        "headerSearchButton"
+    );
+
+    const sectionSearchInput = document.getElementById(
+        "sectionSearchInput"
+    );
+
+    const noResultsMessage = document.getElementById(
+        "sectionSearchNoResults"
+    );
+
+    const dashboardSections = [
+        {
+            title: "IAM Overview",
+            elements: [
+                document.querySelector(".page-intro"),
+                document.querySelector(".stats-grid")
+            ]
+        },
+        {
+            title: "Identity Lifecycle Workflows",
+            elements: [
+                document.getElementById("workflows")
+            ]
+        },
+        {
+            title: "Employee Directory",
+            elements: [
+                document.getElementById("employees")
+            ]
+        },
+        {
+            title: "IAM Audit Log",
+            elements: [
+                document.getElementById("audit")
+            ]
+        },
+        {
+            title: "Entra ID Groups",
+            elements: [
+                document.getElementById("groups")
+            ]
+        }
+    ];
+
+    const searchExtraElements = [
+        document.querySelector(".alert"),
+        document.querySelector(".footer")
+    ];
+
+    function normalizeSectionName(value) {
+        return value.trim().toLowerCase().replace(/\s+/g, " ");
+    }
+
+    function filterDashboardSections() {
+        const query = normalizeSectionName(sectionSearchInput.value);
+
+        if (!query) {
+            dashboardSections.forEach(function (section) {
+                section.elements.forEach(function (element) {
+                    if (element) {
+                        element.classList.remove("section-search-hidden");
+                    }
+                });
+            });
+
+            searchExtraElements.forEach(function (element) {
+                if (element) {
+                    element.classList.remove("section-search-hidden");
+                }
+            });
+
+            noResultsMessage.hidden = true;
+            return;
+        }
+
+        const exactMatch = dashboardSections.find(function (section) {
+            return normalizeSectionName(section.title) === query;
+        });
+
+        const matches = exactMatch
+            ? [exactMatch]
+            : dashboardSections.filter(function (section) {
+                return normalizeSectionName(section.title).includes(query);
+            });
+
+        dashboardSections.forEach(function (section) {
+            const shouldShow = matches.includes(section);
+
+            section.elements.forEach(function (element) {
+                if (element) {
+                    element.classList.toggle(
+                        "section-search-hidden",
+                        !shouldShow
+                    );
+                }
+            });
+        });
+
+        searchExtraElements.forEach(function (element) {
+            if (element) {
+                element.classList.add("section-search-hidden");
+            }
+        });
+
+        noResultsMessage.hidden = matches.length > 0;
+    }
+
+    if (searchButton && sectionSearchInput && noResultsMessage) {
+        searchButton.addEventListener("click", function () {
+            if (sectionSearchInput.hidden) {
+                sectionSearchInput.hidden = false;
+
+                searchButton.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+                sectionSearchInput.focus();
+            } else {
+                sectionSearchInput.value = "";
+                filterDashboardSections();
+
+                sectionSearchInput.hidden = true;
+
+                searchButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+            }
+        });
+
+        sectionSearchInput.addEventListener(
+            "input",
+            filterDashboardSections
+        );
+
+
+        sectionSearchInput.addEventListener(
+            "keydown",
+            function (event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+
+                    const query = normalizeSectionName(
+                        sectionSearchInput.value
+                    );
+
+                    if (!query) {
+                        return;
+                    }
+
+                    filterDashboardSections();
+
+                    const matchedSection = dashboardSections.find(
+                        function (section) {
+                            return normalizeSectionName(
+                                section.title
+                            ) === query;
+                        }
+                    ) || dashboardSections.find(function (section) {
+                        return normalizeSectionName(
+                            section.title
+                        ).includes(query);
+                    });
+
+                    if (matchedSection) {
+                        const target = matchedSection.elements.find(
+                            function (element) {
+                                return element &&
+                                    !element.classList.contains(
+                                        "section-search-hidden"
+                                    );
+                            }
+                        );
+
+                        if (target) {
+                            requestAnimationFrame(function () {
+                                target.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start"
+                                });
+                            });
+                        }
+                    }
+                }
+
+                if (event.key === "Escape") {
+                    sectionSearchInput.value = "";
+                    filterDashboardSections();
+
+                    sectionSearchInput.hidden = true;
+
+                    searchButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    searchButton.focus();
+                }
+            }
+        );
+    }
+
+    /* =====================================================
+       NOTIFICATION BUTTON
+       Displays the latest entries from the existing audit log.
+    ===================================================== */
+
+    const notificationsButton = document.getElementById(
+        "headerNotificationsButton"
+    );
+
+    const notificationPanel = document.getElementById(
+        "notificationPanel"
+    );
+
+    const notificationList = document.getElementById(
+        "notificationList"
+    );
+
+    const closeNotifications = document.getElementById(
+        "closeNotifications"
+    );
+
+    const viewAuditLogs = document.getElementById(
+        "viewAuditLogs"
+    );
+
+    if (
+        !notificationsButton ||
+        !notificationPanel ||
+        !notificationList
+    ) {
+        return;
+    }
+
+    function renderNotifications() {
+        notificationList.replaceChildren();
+
+        const auditRows = Array.from(
+            document.querySelectorAll(
+                "#auditTable tbody tr"
+            )
+        ).filter(function (row) {
+            return row.cells.length >= 5;
+        });
+
+        if (auditRows.length === 0) {
+            const emptyMessage = document.createElement("p");
+            emptyMessage.className = "notification-empty";
+            emptyMessage.textContent =
+                "No audit events available.";
+            notificationList.appendChild(emptyMessage);
+            return;
+        }
+
+        auditRows.slice(0, 5).forEach(function (row) {
+            const cells = Array.from(row.cells).map(
+                function (cell) {
+                    return cell.innerText.trim();
+                }
+            );
+
+            const item = document.createElement("article");
+            item.className = "notification-item";
+
+            const meta = document.createElement("div");
+            meta.className = "notification-item-meta";
+
+            const workflow = document.createElement("span");
+            workflow.className = "notification-workflow";
+            workflow.textContent = cells[1];
+
+            const time = document.createElement("span");
+            time.className = "notification-time";
+            time.textContent = cells[0];
+
+            meta.append(workflow, time);
+
+            const employee = document.createElement("strong");
+            employee.className = "notification-employee";
+            employee.textContent = cells[2];
+
+            const detail = document.createElement("p");
+            detail.className = "notification-detail";
+            detail.textContent = cells[3] + " — " + cells[4];
+
+            item.append(meta, employee, detail);
+            notificationList.appendChild(item);
+        });
+    }
+
+    function setNotificationsOpen(open) {
+        notificationPanel.hidden = !open;
+
+        notificationsButton.setAttribute(
+            "aria-expanded",
+            String(open)
+        );
+
+        if (open) {
+            renderNotifications();
+        }
+    }
+
+    notificationsButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+
+        const isOpen =
+            notificationsButton.getAttribute("aria-expanded") ===
+            "true";
+
+        setNotificationsOpen(!isOpen);
+    });
+
+    if (closeNotifications) {
+        closeNotifications.addEventListener("click", function () {
+            setNotificationsOpen(false);
+            notificationsButton.focus();
+        });
+    }
+
+    if (viewAuditLogs) {
+        viewAuditLogs.addEventListener("click", function () {
+            setNotificationsOpen(false);
+        });
+    }
+
+    document.addEventListener("click", function (event) {
+        if (
+            !notificationPanel.contains(event.target) &&
+            !notificationsButton.contains(event.target)
+        ) {
+            setNotificationsOpen(false);
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            setNotificationsOpen(false);
+        }
+    });
+});
+</script>
+
+</body>
+</html>
